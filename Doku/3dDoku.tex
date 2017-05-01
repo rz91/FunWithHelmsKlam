@@ -1,0 +1,101 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+ 
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage[table]{xcolor}
+%\usepackage[bookmarks,bookmarksnumbered]{hyperref}
+\usepackage{graphics}
+\usepackage{wrapfig}
+\usepackage{amsmath}           %macht
+\usepackage{amsfonts}          %       Mathe
+\usepackage{amssymb}           %              mächtiger
+\usepackage{graphicx}          %erlaubt Graphiken einzubinden (.eps für dvi und ps sowie .jpg für pdf)
+\usepackage[T1]{fontenc}       %Zeichenbelegung der verwendeten Schrift
+\usepackage{typearea}	         %ermöglicht änderung des Seitenspiegels
+\usepackage{lastpage}          %lässt auf die Seienanzahl zugreifen
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption} %macht die Bildbeschriftungen richtig
+\usepackage{microtype}
+\usepackage{bm}               % bold math, für \bm{}
+\usepackage{enumerate}        % verbessert Aufzählungen
+\usepackage{array}            % für Tabellen: bindet tabular-Umgebung ein
+\usepackage{pdfpages}         % für die Einbindung kompletter pdf-*Seiten*
+\usepackage{parskip}          % zw. Absätzen: eine knappe Leerzeile statt hängender Einzüge
+\usepackage{dsfont}
+\usepackage{tocloft}			% Manipulation des Inhaltsverzeichnisses
+\usepackage{siunitx}
+\usepackage{parskip}
+\usepackage{multirow}
+\usepackage{wasysym}
+\usepackage{float}
+\usepackage{slantsc}
+\usepackage{parskip}          % zw. Absätzen: eine knappe Leerzeile statt hängender Einzüge
+\usepackage{blindtext}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Abbildungen werden mit Abb. angezeigt.
+%
+\addto\captionsgerman{%
+  \renewcommand{\figurename}{Abb.}%
+  \renewcommand{\tablename}{Tab.}%
+} 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Kopf- und Fussleiste.
+%
+\usepackage{fancyhdr}
+\fancyhead[LO,LE]{Dokumentation -- 3D-Modellierung und Animation}
+\fancyhead[CO,CE]{}
+%\fancyhead[RO,RE]{\rightmark}
+\fancyfoot[LO,LE]{}
+
+\fancyfoot[CO,CE]{}
+\fancyfoot[RO,RE]{\thepage}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Größenanpassungen
+%
+
+
+\usepackage[a4paper]{geometry}
+\usepackage{setspace}
+\setlength{\unitlength}{1cm}
+\setlength{\oddsidemargin}{0.8cm}
+\setlength{\evensidemargin}{-0.3cm}
+\setlength{\textwidth}{15.5cm}
+\setlength{\topmargin}{-1cm}
+\setlength{\textheight}{23cm}
+\columnsep 0.5cm
+\setstretch{1.15} 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+\begin{document}
+  
+\input{Deckblatt/deckblatt} 
+ 
+% Platzierung des Inhaltsverzeichnisses
+\newpage
+\tableofcontents
+\pagestyle{fancy}
+
+\newpage 
+\input{Vorbereitung/Vorbereitung}
+\newpage
+\input{TerrainCo/TerrainCo}
+\input{3dsMax/3dsMax}
+\input{Skripte/Skripte}
+ 
+\newpage 
+ 
+% Abbildungsverzeichnis
+\listoffigures
+ 
+\end{document}
