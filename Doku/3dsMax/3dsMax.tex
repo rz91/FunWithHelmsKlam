@@ -103,7 +103,7 @@ Abb. \ref{fig:Mauer} zeigt die lange Verteidigungsmauer und den bereits erwähnt
 	\label{fig:Haupthaus}
 \end{figure}
 
-\begin{wrapfigure}{r}{0.3\textwidth}
+\begin{wrapfigure}[8]{r}{0.3\textwidth}
 	\begin{center}
 		\includegraphics[width=0.22\textwidth]{Abbildungen/3dsMax/Turm}
 	\end{center}
@@ -118,8 +118,40 @@ Um Platz für das in Abb. \ref{fig:Haupthaus} zu sehende Haupthaus zu schaffen, 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.95 \linewidth]{Abbildungen/3dsMax/Burg_final}
-	\caption{texturierte Burg}
-	\label{fig:Burg_final}
+	\includegraphics[width=0.95 \linewidth]{Abbildungen/3dsMax/Texturierung/Texturierung}
+	\caption{Texturierung der Burg}
+	\label{fig:textur}
 \end{figure}
+
+Zur Texturierung der Burg waren mehrere Schritte notwendig. Der erste Schritt umfasste das Aussuchen der Texturen. Im Internet wird eine Vielzahl an Texturen in Form von Bitmaps angeboten. Die ausgewählten Texturen wurden in den Materialeditor eingefügt (siehe Abb. \ref{fig:textur}.3)). Im nächsten Schritt wurden die Materialien den dazugehörigen Objekten zugeordnet. Durch eine Auswahl mit dem Polygonwerkzeug konnten auch mehrere Texturen auf ein Objekt angewendet werden. Nach der Zuordnung der Materialien fiel auf, dass die Texturen verzerrt waren. Dies liegt daran, dass 3dsMax komplexe Objekte nicht automatisch in Ihre sogenannte \textit{UVW Map} zerlegen kann. Diese Zerlegung musste per Hand erfolgen. Dazu wendet man auf das Objekt den Modifikator \textit{Unwrap UVW} an. Nun kann man über den \textit{UV Editor}(siehe Abb. \ref{fig:textur}).2) die UV Map per Hand bearbeiten, skalieren und drehen. Abb. \ref{fig:textur}.1 zeigt die fertig texturierte Burg.
+\newpage
+
+\subsection{Animationen in 3dsMax}
+\subsubsection{Katapult}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.95 \linewidth]{Abbildungen/3dsMax/catapult}
+	\caption{Katapult}
+	\label{fig:catapult}
+\end{figure}
+
+\begin{wrapfigure}[14]{r}{0.3\textwidth}
+	\begin{center}
+		\includegraphics[width=0.3\textwidth]{Abbildungen/3dsMax/pivot}
+	\end{center}
+	\caption{Pivot Einstellung}
+	\label{fig:Pivot}
+\end{wrapfigure}
+
+Im Unity Assetstore findet sich das in Abb. \ref{fig:catapult} zu sehende Katapult, welches aus zwei Teilen besteht, dem Fahrwerk und dem Katapultarm. Der Katapultarm sollte animiert werden um einen Stein abfeuern zu können. An erster Stelle musste der Pivotpunkt des Armes verschoben werden, um eine Drehung um die richtige Position zu ermöglichen. Dazu wechselt man in die Hierachie Einstellung und wählt \textit{Affect Pivot Only} (siehe Abb. \ref{fig:Pivot}). Nun kann man den Pivot Punkt beliebig verschieben. Istr die richtige Position gefunden, aktiviert man den \textit{Auto-Key} Modus, um Keyframes für die Animation zu erstellen. Der erste Keyframe wird automatisch am Anfang gesetzt. Nun dreht man den Katapultarm zu seiner Endposition, wählt in der Zeitleiste einen späteren Zeitpunkt und ein neuer Keyframe wird gesetzt. Damit ist die Animation abgeschlossen. Identisch wurde mit dem zu feuerendem Stein verfahren, mit der Ausnahme, dass die Animation noch mit der Flugkurve des Steines erweitert wurde. Diese führt durch das zu treffende Objekt (Mauer) und endet dahinter (auf dem Boden).
+
+\subsubsection{Mauer}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.95 \linewidth]{Abbildungen/3dsMax/rayfire}
+	\caption{Mauerexplosion}
+	\label{fig:rayfire}
+\end{figure}
+Um die Mauer bei Steineinschlag zerspringen zu lassen, wurde die Demoversion des 3dsMax Plugins \textit{Rayfire} verwendet. Um dieses Plugin nutzen zu können, wählt man es aus der Objektliste aus. Darauffolgend öffnet sich der in Abb. \ref{fig:rayfire} zu sehende Dialog. Durch sogenanntes fragmentieren wird die Mauer automatisch in viele unförmige Teile zerlegt. Diese dienen später als Splitter der Explosion. Nach dem einstellen des Animationsbeginn und -ende, kann man nun den beteiligten Objekten ihre Rollen zuweisen. Die Mauerobjekte sind sogenannte \textit(Sleeping Objects). Das bedeutet sie bleiben an Ort und Stelle bis ein sogenanntes \textit{Kinematic Object} auf sie einwirkt. Diese Rolle übernimmt der Stein, welcher im Laufe seiner Animation durch die Mauer fliegt. Wurden nun alle Einstellungen getroffen, kann man sich über den \textit{Preview} Button das Resultat ansehen. Ist man mit diesem zufrieden, werden die Keyframes der Animation mit dem \textit{Bake} Befehl generiert. Nach diesem Befehl ist ein bearbeiten der Animation nicht mehr möglich.
  

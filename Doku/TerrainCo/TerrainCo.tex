@@ -83,6 +83,45 @@ Einfache Animationen, wie das Öffnen eines Burgtores können in Unity schnell u
 
 
 \subsection{Partikelsystem Fackel}
+In wenigen Schritten und mithilfe des Partikelsystems in Unity kann man in kürzester Zeit schöne Feuereffekte erstellen.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/Fire/fire1}
+\caption{Grundeinstellung Partikelsystem}
+\label{fig:fire1}
+\end{figure}
+
+Im ersten Schritt wird ein Gameobject \textit{Particle System} erstellt und die in Abb. \ref{fig:fire1} abgebildeten Grundeinstellungen vorgenommen.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/Fire/fire2}
+\caption{Einstellungen Emission und Shape}
+\label{fig:fire2}
+\end{figure}
+
+Um die Partikel zu verdichten und die horizontale Streuung einzugrenzen, wird die Emission erhöht und die Form angepasst. (siehe Abb.\ref{fig:fire2}) 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/Fire/fire3}
+\caption{Einstellungen Size over Livetime und Rotation over Lifetime}
+\label{fig:fire3}
+\end{figure}
+
+Die typische Flammenform erreicht man, indem man die Größe im Bezug zur Lebensdauer anpasst. Dazu wählt man eine exponentiell sinkende Kurve. Außerdem versetzt man die Partikel in eine Rotation. (siehe Abb. \textit{fire3})
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/Fire/fire4}
+\caption{Material und Point Light}
+\label{fig:fire4}
+\end{figure}
+
+Um einen Flammenähnlichen Farbverlauf zu erreichen, muss man dem Partikelsystem ein Material zufügen. Dieses besteht aus dem Bild einer Flame auf schwarzem Hintergrund und entfaltet durch den Shader \textit{Particles/Additive} den gewünschten Effekt.
+
+\newpage
 
 \subsection{Benutzeroberfläche}
 \subsubsection{Hauptmenü}
