@@ -81,11 +81,21 @@ Kommen die Animationen eines Modells aus 3d Studio Max liegen diese in einer Ani
 
 \subsubsection{Animation Controller}
 
+Der Animation Controller ist der bevorzugte Weg um Animationen zu kontrollieren und sie abzuspielen. Es handelt sich darin um einen Zustandsautomaten. In jedem Zustand wird eine Animation abgespielt. Übergänge von einem zum anderen bewirkt das Abspielen einer neuen Bewegung. Die Übergänge zwischen zwei Zuständen können mit Bedingungen versehen werden. In Abb. \ref{fig:animController} sieht man den Controller für das Burgtor. Zu Beginn der Szene wird in den \textit{MainDoorClosed} Zustand gewechselt. In diesem wird eine Ruhe-Animation abgespielt, welche dem geschlossenen Tor entspricht. Per Skript kann die Variable \textit{open} gesetzt werden und es erfolgt der Wechsel in den Zustand \textit{MainDoorOpen} der die Animation zum Öffnen des Tores abspielt. Ist diese beendet, wechselt der Automat in den Ruhe-Zustand des geöffneten Burgtores. Von diesem Zustand aus, kann über das Setzen der Variable \textit{close}, zum geschlossenen gewechselt werden. Über den Controller können auch Überblendungen zwischen den Animationen eingestellt werden. Die Einstellung dafür sind auf der rechten Seite der Abbildung zu sehen. So wird es möglich auch zwei Animationen nahtlos ineinander übergehen zu lassen. 
 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/AnimationController}
+	\caption{Animation-Controller zur Steuerung von Animationen}
+	\label{fig:animController}
+\end{figure}
+
+\newpage
 \subsection{Partikelsystem Fackel}
 In wenigen Schritten und mithilfe des Partikelsystems in Unity kann man in kürzester Zeit schöne Feuereffekte erstellen.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{Abbildungen/Unity/Fire/fire1}
 \caption{Grundeinstellung Partikelsystem}
@@ -110,7 +120,7 @@ Um die Partikel zu verdichten und die horizontale Streuung einzugrenzen, wird di
 \label{fig:fire3}
 \end{figure}
 
-Die typische Flammenform erreicht man, indem man die Größe im Bezug zur Lebensdauer anpasst. Dazu wählt man eine exponentiell sinkende Kurve. Außerdem versetzt man die Partikel in eine Rotation. (siehe Abb. \textit{fire3})
+Die typische Flammenform erreicht man, indem man die Größe im Bezug zur Lebensdauer anpasst. Dazu wählt man eine exponentiell sinkende Kurve. Außerdem versetzt man die Partikel in eine Rotation. (siehe Abb. \ref{fig:fire3})
 
 \begin{figure}[h!]
 \centering
@@ -124,10 +134,58 @@ Um einen Flammenähnlichen Farbverlauf zu erreichen, muss man dem Partikelsystem
 \newpage
 
 \subsection{Benutzeroberfläche}
-\subsubsection{Hauptmenü}
-\subsubsection{}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/GuiCombined}
+	\caption{Graphische Nutzeroberflächen}
+	\label{fig:GuiCombined}
+\end{figure}
 
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/MainMenu}
+%	\caption{Hauptmenü}
+%	\label{fig:mainMenu}
+%\end{figure}
+%
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/IngameMenu}
+%	\caption{Spielmenü}
+%	\label{fig:ingameMenü}
+%\end{figure}
+
+%\begin{wrapfigure}{r}{0.6\textwidth}
+%
+%	\begin{center}
+%		\includegraphics[width=0.55\textwidth]{Abbildungen/Unity/GuiExample}
+%	\end{center}
+%	\caption{Hierarchie und Inspektor für Startbutton}
+%	\label{fig:3dsAnim}
+%\end{wrapfigure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.95\linewidth]{Abbildungen/Unity/GuiExample}
+	\caption{Hierarchie und Inspektor für Startbutton}
+	\label{fig:GuiExample}
+\end{figure}
+
+Zur Erstellung von graphischen Nutzeroberflächen stehen in Unity vergleichbare Elemente wie in gängigen Programmiersprachen zur Verfügung. Grundelement einer jeden Benutzeroberfläche sind die \textit{Canvas}. In diese werden die Elemente über den Editor eingefügt, positioniert und individualisiert.  Es gibt verschiedene Möglichkeiten zur Darstellung. Für diesen Anwendungsfall wurde die Darstellungsart \textit{Screen Space - Overlay} gewählt. Dadurch werden die Elemente der Benutzeroberfläche bildschirmfüllend über die Szene gelegt. In Abbildung \ref{fig:GuiCombined} sieht man links das Haupt- und rechts das Spielmenü. Der generelle Aufbau beider Oberflächen ist sehr ähnlich. In Abb. \ref{fig:GuiExample} ist der Szenengraph des Hauptmenüs und die exemplarischen Einstellungen des Start-Buttons zu sehen. Die Szene des Hauptmenüs wurde von der eigentlichen abgeleitet. Unterschied ist die feste Kamera anstatt des \textit{FPS-Controllers} und die Entfernung jeglicher Umgebungsgeräusche. Stattdessen wird während der Darstellung des Hauptmenüs eine eingängige Musik abgespielt. Unten rechts in Abb. \ref{fig:GuiExample} ist zu sehen was beim Klicken des Start-Button erfolgt. In unserem Fall wird dadurch in die eigentliche Spielszene gewechselt.
+
+\subsection{Audio}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+	\vspace{-20pt}
+	\begin{center}
+		\includegraphics[width=0.45\textwidth]{Abbildungen/Unity/calmWaterAudio}
+	\end{center}
+	\caption{Audioeinstellungen}
+	\label{fig:audioExample}
+\end{wrapfigure}
+
+Audioquellen können auf die gleiche Art und Weise wie 3d Objekte in der Welt platziert werden. Um diese zu hören, muss auf einem anderen Objekt ein \textit{Audio Listener} vorhanden sein. Im Fall unseres Projektes macht es nur Sinn, diesen bei einer Kamera oder dem Charakter zu platzieren. Das Platzieren zweier \textit{Listener} zur gleichen Zeit muss unbedingt vermieden werden. Abb. \ref{fig:audioExample} zeigt die Einstellungen der Wasserhintergrundgeräusche. Im oberen Teil ist sichtbar, dass die Geräusche sofort zum Beginn der Szene abgespielt werden und danach, bis zum Schließen dieser, wiederholt wird. Es ist natürlich ebenso möglich, Musik oder Tonquellen programmatisch zu starten. Im unteren Teil sind die Einstellungen zum Zusammenhang zwischen Entfernung und Lautstärke zu sehen. Im Falle des Wassergeräusches wurde eine eigene Kurve gewählt. Der Grund für diese Entscheidung, war das Vorhandensein zwei Tonquellen mit dem gleichen Geräusch. Nur dadurch war ein zufriedenstellendes Ergebnis für das plätschernde Geräusch des Wassers zu erreichen. Normalerweise genügen aber die beiden vordefinierten Lautstärke Kurven, logarithmisch und linear. Damit die \textit{3D Sound Settings} wirken, darf der Regler \textit{Spatial Blend} nicht auf 2D eingestellt werden.
 
 
 

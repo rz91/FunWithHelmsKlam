@@ -1,1 +1,25 @@
 \section{Skripte}
+\subsection{Allgemein}
+Im zu bearbeitenden Projekt wurde die C-Sharp als Programmiersprache ausgewählt. Gründe hierfür waren die statische Typisierung und die Ähnlichkeit zu Java. Der Einstieg in das Skripten der Szene stellte sich als anspruchsvoll heraus. Ohne eine grundlegendes Verständnis der verschiedene Einstiegspunkte in ein Skript, z. B. \textit{Update}, war es nicht möglich mit der Programmierung zu beginnen. Deshalb soll an dieser Stelle auf einige wichtige Erkenntnisse, für das Arbeiten mit Klassen, die von \textit{MonoBehaviour} erben, eingegangen werden.
+
+\begin{itemize}
+	\item \textbf{Öffentliche Variablen:} Mit \textit{public} gekennzeichnete Attribute können über den Editor per Drag and Drop belegt werden.
+	\item \textbf{Suche nach Objekten:} Befindet sich das Skript in Objekt A, können Referenzen auf Unterobjekte von A per \textit{GetComponent<TYP>} angefordert werden. TYP kann beispielsweise \textit{AudioSource} sein. Liegen mehrere des gleichen Typs vor kann die Methode \textit{GetComponents<TYP>} benutzt werden. Sollen Referenzen auf beliebige Objekte in einer Szene gefunden werden bietet sich die statische Methode \textit{GameObject.Find("Name des Objekts")} an.
+	\item \textbf{Aktualisierung eines Objektes:} Soll ein Objekt während des \textit{Renderns} aktualisiert werden, gibt es die Methode \textit{Update}. Diese wird bei jeder Berechnung eines \textit{Frames} aufgerufen. Dort können beispielsweise Transformationen oder andere Aktionen ausgelöst werden.
+	\item \textbf{Initialisierung eines Objektes:} Für diesen Anwendungsfall existiert die Methode \textit{Start}. An dieser Stelle können beispielsweise Referenzen auf andere Objekte gesucht werden. Dadurch muss dies nicht bei jedem Aufruf der\textit{Update}-Methode geschehen.
+	\item \textbf{Kollisionserkennung:} Gibt es am skriptenthaltenden Objekt ein \textit{Collider} so existieren die Methoden \textit{OnTriggerEnter} oder \textit{OnTriggerExit}. Über diese kann erkannt werden, wenn sich zum Beispiel der Spieler in die Nähe des Katapult begibt oder sich wieder entfernt.
+\end{itemize}
+
+Nach Erlangung, der für dieses Projekts wichtigsten Verständnisse, bestand die Programmierung der Szene weitgehend aus dem Lesen der Dokumentation und Anwendung dieser.
+
+\subsection{Beispiel Innentür}
+\lstinputlisting[caption=Öffnen der Innentür, label=lst:door.cs]{Skripte/Door.cs}
+
+Im Codebeispiel \ref{lst:door.cs} soll auf das Öffnen der inneren Burgtor erklärt werden. Dieses Beispiel wurde gewählt, weil die Richtung zum Öffnen der Tür von der Position des Spieler abhängt. Zusätzlich werden verschiedene Sounds für das Öffnen und Schließen verwendet. In den Zeilen 5 bis 17 werden die verschiedenen Attribute der Klasse deklariert und teilweise initialisiert. Erwähnenswert sind die drei Hashes auf den Zeilen 13 bis 15. Diese dienen zum schnelleren Vergleich der Zustände des \textit{Animation Controllers}. In der Methode \textit{Start} werden die verschiedenen Attribute initialisiert. Wichtig für das weitere Verständnis ist das Attribut \textit{directionPlane}. Es handelt sich um ein Verweis auf eine Rechteck, welches plan auf der ungeöffneten Tür liegt. Durch dieses kann später berechnet werden auf welcher Seite  der Tür sich der Spieler befindet. Die beiden Funktionen auf den Zeilen 61 bis 77 setzen die Variable \textit{inRange} auf wahr oder falsch, je nach dem, ob sich der Spieler in der Reichtweite zur Tür befindet.
+
+Die Methode \textit{Update} stellt die eigentliche Funktionalität zur Interaktion mit der Tür bereit. Zu Beginn wird geprüft, ob der Spieler sich in Reichweite der Tür befindet. Ist die nicht der Fall, wird die Methode sofort verlassen.
+Anschließend wird abgefragt, ob die Taste E gedrückt wurde. Sollte dies eintreffen, wird der Vektor von Spieler zur Tür berechnet und der Normalvektor der \textit{directionPlane} ausgelesen. Zusätzlich wird der \textit{Animation Controller} nach seinem Zustand gefragt. Auf den Zeilen 41 und 53 wird über den Zustand des \textit{Animation Controllers} herausgefunden, ob die Tür gerade geschlossen oder offen ist. Wird in diesem Moment eine Öffnen- oder Schließen-Animation abgespielt wird dieser Block übersprungen. Falls sie geschlossen ist, wird auf Zeile 43 über den Winkel zwischen dem Vektor von Spieler zu Tür und dem Normalvektor herausgefunden, auf welcher Seite der Spieler sich befindet. Abhängig davon, wird über \textit(setTrigger) die Tür nach Innen oder Außen geöffnet und zusätzlich auf Zeile 52 das Geräusch zum Öffnen abgespielt. Ist die Tür offen, muss die Position des Spielers nicht beachtet werden und die Animation bzw. der Ton wird einfach abgespielt.  
+
+Die anderen Skripte der Szene folgen diesen Mechanismen und können gerne im Rahmen der Präsentation besprochen werden.
+
+  
